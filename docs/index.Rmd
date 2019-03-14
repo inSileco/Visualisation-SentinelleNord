@@ -1,0 +1,1152 @@
+---
+title: "Visualisation scientifique"
+subtitle   : "Survol et possibilités"
+author     : 'David Beauchesne et Pierre Lagagneux'
+job        : 'Matériel: D. Beauchesne, K. Cazelles, N. Casajus, E. Dreujou, M.-H. Brice, S. Vissault, R. Daigle'
+framework  : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter: highlight.js  # {highlight.js, prettify, highlight}
+hitheme    : tomorrow      #
+mode       : selfcontained # {standalone, draft}
+knit       : slidify::knit2slides
+user       : david-beauchesne
+assets     :
+  css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+---
+
+
+<!--
+
+q()
+cd /Users/davidbeauchesne/PhD/Acquisition_connaissance-Workshops/2019-03-13-Visualisation
+R
+for (i in list.files("./scripts", pattern="*\\.R$", full.names = TRUE)) {
+  knitr::read_chunk(i)
+}
+slidify::slidify("./docs/viz.Rmd")
+
+-->
+
+
+<!-- Setting knitr  -->
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "##",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width=6,
+  fig.height=6
+)
+```
+
+```{r echo=FALSE}
+off = '#909090'
+foc <- '#393939'
+```
+
+<!-- Call our scripts -->
+
+```{r echo = FALSE}
+for (i in list.files("../scripts", pattern="*\\.R$", full.names = TRUE))
+    knitr::read_chunk(i)
+```
+
+<!--
+
+
+[X] - Hans Rosling
+[ ] - Bases des graphiques
+[ ]   - Élément graphiques
+[ ]   - Tips
+[ ] - Reproductibilité
+[ ] - Easy graphs
+[ ]   - Excel vs Sigmaplot vs R
+[ ] - Cartographie
+[ ]   - ArcGIS/QGIS vs R
+[ ] - Complex layouts
+[ ] - Exporting
+[ ] - ggplot
+[ ] - graph dynamique: mapview
+[ ] - Visualisation interactive (shiny)
+[ ] - Ressources de données en ligne
+[ ] - Outils
+
+-->
+
+<!-- ################################################################################ -->
+
+## Atelier
+
+- Aspects techniques de la visualisation scientifique
+- Survol des possibilités
+- Melting pot de formations plus spécifiques
+  - [Graph in R](http://kevcaz.github.io/QCBSgraphR/) by[ K. Cazelles](https://github.com/KevCaz) & [N. Casajus](https://github.com/ahasverus)
+  - [VisualiseR](https://insileco.github.io/VisualiseR/) by [inSileco](https://insileco.github.io/), in construction
+  - [R in Space](https://insileco.github.io/tags/r-in-space/) by [inSileco](https://insileco.github.io/)
+
+<!-- ################################################################################ -->
+
+--- .andy
+
+## L'importance des graphiques
+
+<q><b>"Une image vaut mille mots"</b></q>
+
+
+- Résumé visuel de données et de résultats
+- Plus efficace que des tables et du texte (parfois, pas toujours!)
+- <b>Expoloration</b> de données
+  - Tendances, corrélations, cycles, données extrêmes, etc
+- Essentiel pour présenter des résultats
+
+<br/>
+
+
+<!-- ################################################################################ -->
+
+---
+
+<iframe width="948" height="533" src="https://www.youtube.com/embed/jbkSRLYSojo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## La base des graphiques
+
+
+<!-- ################################################################################ -->
+
+---
+
+## Choix graphique
+
+<b>"Règles" de base</b>:
+
+- Choisir le bon type de visualisation  (!!!)
+- Selon les données et la question posée
+- Outils utile pour sélection type de visualisation
+  - Data vizualisation project - https://datavizproject.com/
+
+<q><b>Les options les plus simples sont parfois les meilleures</b></q>
+
+<!-- ################################################################################ -->
+
+---
+
+## Éléments graphique
+
+<br/>
+
+<q><b>Chaque élément graphique doit aider à comprendre les données</b></q>
+
+<q><b>Un graphique doit être autosuffisant</b></q>
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+*** =right
+
+```{r echo=FALSE}
+<<load_data>>
+<<component_1>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+- Zone graphique
+
+*** =right
+
+```{r echo=FALSE}
+<<component_2>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+- Zone graphique
+- Zone de représentation des données
+
+*** =right
+
+```{r echo=FALSE}
+<<component_3>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+- Zone graphique
+- Zone de représentation des données
+- Représentation des données
+
+
+*** =right
+
+```{r echo=FALSE}
+<<component_4>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+- Zone graphique
+- Zone de représentation des données
+- Représentation des données
+- Axe
+
+
+*** =right
+
+```{r echo=FALSE}
+<<component_5>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+- Zone graphique
+- Zone de représentation des données
+- Représentation des données
+- Axe
+- Titre
+
+
+*** =right
+
+```{r echo=FALSE}
+<<component_6>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+- Zone graphique
+- Zone de représentation des données
+- Représentation des données
+- Axe
+- Titre
+- Légende
+
+*** =right
+
+```{r echo=FALSE}
+<<component_7>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Éléments graphique
+
+*** =left
+
+- Zone graphique
+- Zone de représentation des données
+- Représentation des données
+- Axe
+- Titre
+- Légende
+
+<b>Aussi vrai pour une carte géographique</b>
+
+*** =right
+
+```{r echo=FALSE, warnings=FALSE, messages=FALSE}
+<<egsl>>
+
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Recommandations graphique
+
+*** =left
+
+- Éviter pie charts et les graphs 3D
+
+
+*** =right
+```{r echo = FALSE}
+<<pie3d_1>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Recommandations graphique
+
+*** =left
+
+- Éviter *pie charts* et les graphs 3D
+
+
+*** =right
+```{r echo = FALSE}
+<<pie3d_2>>
+```
+
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Recommandations graphique
+
+*** =left
+
+- Éviter *pie charts* et les graphs 3D
+- Uniformiser les couleurs
+- Limiter le nombre de couleurs
+- Utiliser la taille des points et <br/>
+  des symboles
+
+*** =right
+```{r echo = FALSE}
+<<bubble_1>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Recommandations graphique
+
+*** =left
+
+- Éviter *pie charts* et les graphs 3D
+- Uniformiser les couleurs
+- Limiter le nombre de couleurs
+- Utiliser la taille des points et <br/>
+  des symboles
+
+
+*** =right
+```{r echo = FALSE}
+<<bubble_2>>
+```
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Recommandations graphique
+
+*** =left
+
+- Éviter *pie charts* et les graphs 3D
+- Uniformiser les couleurs
+- Limiter le nombre de couleurs
+- Utiliser la taille des points et <br/>
+  des symboles
+- Éviter les éléments graphiques <br/>
+  inutiles (*chart junk*)
+  - Data-ink ratio (Tufte 1983)
+
+*** =right
+```{r echo = FALSE}
+<<tufte_1>>
+```
+
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Recommandations graphique
+
+*** =left
+
+- Éviter *pie charts* et les graphs 3D
+- Uniformiser les couleurs
+- Limiter le nombre de couleurs
+- Utiliser la taille des points et <br/>
+  des symboles
+- Éviter les éléments graphiques <br/>
+  inutiles (*chart junk*)
+  - Data-ink ratio (Tufte 1983)
+
+*** =right
+```{r echo = FALSE}
+<<tufte_2>>
+```
+
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Construction graphique
+
+<!-- ################################################################################ -->
+
+---
+
+## Outils
+
+- Excel
+- SigmaPlot
+- Photoshop
+- Python
+- R
+- etc
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Reproductibilité
+
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Reproductibilité
+
+*** =left
+
+- Reproductibilité scientifique
+- Données modifiées
+- Résultats ajustés
+- Requête(sss) de superviseurs!
+
+
+<!-- ################################################################################ -->
+
+---&twocol w1:40% w2:60%
+
+## Reproductibilité
+
+*** =left
+
+- Reproductibilité scientifique
+- Données modifiées
+- Résultats ajustés
+- Requête(sss) de superviseurs!
+
+
+<br/>
+
+<b>Utiliser du code pour produire des figures</b>
+
+
+```{r, eval = F}
+<<reprod>>
+```
+
+*** =right
+
+```{r, fig.height=6, fig.width=6, echo = F}
+<<reprod>>
+```
+
+
+<!-- ################################################################################ -->
+
+--- &slide
+
+## R
+
+
+- Logiciel de graphisme et de statistique
+- Open-source, gratuit et multi-platforme
+- Largement utilisé par la communauté scientifique
+- Language de programmation
+- Implémentation du language de programmation S
+- Système développé par des package créés par les utilisateurs
+
+<div class='centered'> <img src='./assets/img/Rlogo.png' style="align:center; width:15%;"/> </div>
+
+<!-- ################################################################################ -->
+
+---
+## R
+
+  <img src='./assets/img/Murrell2015.jpg' style="width:60%; margin: 0 20%;"/>
+  <div class='centered'>Murrell, P. (2015) <a href="https://journal.r-project.org/archive/2015-1/murrell.pdf">The gridGraphics Package</a>. The R Jounal.</div>
+
+<!-- ################################################################################ -->
+
+---
+
+## Packages graphiques
+
+- Plus de 100 packages graphiques
+- Pour une revue: [R task view](https://cran.r-project.org/web/views/Graphics.html)
+- Pour une autre liste exhaustive: [inSileco list of packages to create and edit plots](https://insileco.github.io/wiki/rgraphpkgs/)
+
+<!-- Faudrait dire que c'est un des coûts d'avoir autant de facilité... -->
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+- Package de base
+- Contient la fameuse fonction `plot()`
+- Autre fonctions très utilisées:
+  - `boxplot()`, `barplot()`, `hist()`
+  - `lines()`, `points()`, `legend()`
+  - etc.
+
+```{r, eval = FALSE}
+<<scatter_cmd>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<load_data>>
+<<scatter>>
+```
+
+<!-- ################################################################################ -->
+
+---
+
+## Packages graphiques - graphics
+
+<q> Vous n'avez besoin de connaître qu'une seule fonction: `plot()`</q>
+
+```{r echo = FALSE, fig.height = 4, fig.width = 12, fig.align='center'}
+<<the_plot>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+<b>Esthétique à améliorer</b>
+
+
+```{r, eval = FALSE}
+<<decomp1>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<decomp1>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+<b>Décomposition graphique</b>
+- Ajout d'éléments succésivement au <br/>
+  graphique
+- Grande flexibilité
+- Peu de fonctions
+- Beaucoup de travail
+
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+
+```{r, eval = FALSE}
+<<decomp2_cmd>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<decomp2>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+
+```{r, eval = FALSE}
+<<decomp3_cmd>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<decomp3>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+
+```{r, eval = FALSE}
+<<decomp4_cmd>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<decomp4>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+
+```{r, eval = FALSE}
+<<decomp5_cmd>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<decomp5>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+```{r, eval = FALSE}
+<<decomp6_cmd>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<decomp6>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - graphics
+
+*** =left
+```{r, eval = FALSE}
+<<decomp7_cmd>>
+```
+
+*** =right
+
+```{r, echo = FALSE}
+<<decomp7>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - ggplot2
+
+*** =left
+- Un système de graphisme complet
+- Basé sur la grammaire des graphiques
+- Très populaire
+- Utilise sa propre syntaxe...
+- qui peut être difficile à apprendre
+
+```{r eval = FALSE}
+<<ggplot_cmd>>
+```
+
+*** =right
+```{r echo = FALSE}
+<<ggplot>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - ggplot2
+
+*** =left
+- Un système de graphisme complet
+- Basé sur la grammaire des graphiques
+- Très populaire
+- Utilise sa propre syntaxe...
+- qui peut être difficile à apprendre
+
+```{r eval = FALSE}
+<<ggplot_cmd2>>
+```
+
+*** =right
+```{r echo = FALSE}
+<<ggplot2>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Packages graphiques - ggplot2
+
+*** =left
+- Un système de graphisme complet
+- Basé sur la grammaire des graphiques
+- Très populaire
+- Utilise sa propre syntaxe...
+- qui peut être difficile à apprendre
+
+```{r eval = FALSE}
+<<ggplot_cmd3>>
+```
+
+*** =right
+```{r echo = FALSE}
+<<ggplot3>>
+```
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Analyses spatiale et cartographie
+
+
+<!-- ################################################################################ -->
+
+---
+
+## Outils
+
+- ArcGIS
+- QGIS
+- Python
+- R
+- etc
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Reproductibilité (encore une fois!)
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Reproductibilité
+
+*** =left
+```{r, eval = FALSE}
+<<spOcc>>
+```
+
+*** =right
+
+<figure>
+  <img src="./assets/img/spOcc.png" width="500" height="450" class="center">
+</figure>
+
+<!-- ################################################################################ -->
+
+---
+
+## Analyses spatiales et catrographie sous R
+
+- Série de packages permettant les analyses spatiales <br/>
+  et la cartographie sous R
+  - `sf`, `raster`, `mapview`, `rgdal`, `rgeos`, ...
+- Opérations sur raster et vecteurs
+- Efficacité d'analyse
+- Production de carte géographique
+- Outils graphiques intégrés
+  - `graphics`
+  - `ggplot2`
+
+<!-- ################################################################################ -->
+
+---
+
+## Ressources spatiales et cartographiques
+
+- Plusieurs packages permettent d'accéder à des ressources <br/>
+  spatiales et cartographiques en utilisant R
+  données spatiales en utilisant R
+- Données abiotiques: `marmap`, `raster`, `rnoaa`, `sdmpredictors`
+- Données biotiques: `rgbif`, `robis`, `spocc`
+- Base maps: `ggmap`, `mregions`, `osmdata`, `raster`, `rnaturalearth`
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Ressources spatiales et cartographiques
+
+*** =left
+```{r, eval = FALSE}
+<<canada_cmd>>
+```
+
+*** =right
+```{r, echo = FALSE}
+<<canada>>
+```
+
+<!-- ################################################################################ -->
+
+---
+
+<figure>
+  <img src="./assets/img/footprint.png" width="90%" height="80%" class="center">
+</figure>
+
+<!-- ################################################################################ -->
+
+---
+
+<figure>
+  <img src="./assets/img/Ic.png" width="90%" height="80%" class="center">
+</figure>
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Partitionnement et composition
+
+<!-- ################################################################################ -->
+
+---
+
+## Partitionnement et composition
+
+<b>Construction de graphiques complexes</b>
+
+- Partitionnement du périphérique graphique afin <br/>
+  d'y inclure plusieurs graphes
+- Construction de graphiques superposés
+- Mise en page complexe
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Partitionnement et composition
+
+*** =left
+
+<b>Partitionnement de base</b>
+
+- Argument `mfrow` dans `par()`
+
+```{r, eval = FALSE}
+<<part1>>
+```
+
+*** =right
+```{r, echo = FALSE}
+<<part1>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Partitionnement et composition
+
+*** =left
+
+<b>Partitionnement avancé</b>
+
+- `layout()`
+
+```{r, eval = FALSE}
+<<part2>>
+```
+
+*** =right
+```{r, echo = FALSE}
+<<part2>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Partitionnement et composition
+
+*** =left
+
+<b>Partitionnement avancé</b>
+
+- `layout()`
+
+```{r, eval = FALSE}
+<<part3>>
+```
+
+*** =right
+```{r, echo = FALSE}
+<<part3>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Partitionnement et composition
+
+*** =left
+<br/><br/>
+```{r, echo = FALSE, fig.height=5, fig.width=5}
+<<part4>>
+```
+
+*** =right
+
+<figure>
+  <img src="./assets/img/kernel.png" width="600" height="450" class="center">
+</figure>
+
+<!-- ################################################################################ -->
+
+---
+
+<br/>
+
+<figure>
+  <img src="./assets/img/interDissimilarity.png" width="60%" height="60%" class="center">
+</figure>
+
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Partitionnement et composition
+
+*** =left
+
+<b>Graphiques superposés</b>
+
+- Argument `new` dans `par()`
+
+```{r, eval = FALSE}
+<<part5>>
+```
+
+*** =right
+```{r, echo = FALSE}
+<<part5>>
+```
+
+<!-- ################################################################################ -->
+
+--- &twocol w1:40% w2:60%
+
+## Partitionnement et composition
+
+*** =left
+
+<b>Graphiques imbriqués</b> (médaillon)
+
+- Arguments `new`, `fig` dans `par()`
+
+```{r, eval = FALSE}
+<<part6_cmd>>
+```
+
+*** =right
+```{r, echo = FALSE}
+<<part6>>
+```
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Visualisation interactive
+
+<!-- ################################################################################ -->
+
+---
+
+## Visualisation interactive
+
+- Graphique avec lequel on peut interagir:
+  - Modifier axes
+  - Zoom
+  - Pointer
+  - etc
+- Basé sur le language html: `htmltools`, `htmlwidgets`
+- Plusieurs packages disponible:
+  - https://www.htmlwidgets.org/
+  - `leaflet`, `plotly`, `networkD3`, ...
+
+<!-- ################################################################################ -->
+
+---
+
+<iframe width="100%" height="100%"
+src="https://www.htmlwidgets.org/showcase_leaflet.html">
+</iframe>
+
+<!-- ################################################################################ -->
+
+---
+
+<section class = "slide coder"><div>
+<iframe width="100%" height="100%"
+src="https://plot.ly/r/dashboard/">
+</iframe>
+</div></section>
+
+<!-- ################################################################################ -->
+
+---
+
+<iframe width="100%" height="100%"
+src="https://insileco.github.io/fr-departement-election/">
+</iframe>
+
+
+<!-- ################################################################################ -->
+
+---
+
+<iframe width="100%" height="100%"
+src="https://qcbs.ca/dashboard/pages/index.php?graph=collaboration_edge&lang=fr">
+</iframe>
+
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Applications interactives
+
+<!-- ################################################################################ -->
+
+---
+
+## Applications interactive
+
+- Construction d'applications web interactives
+- Package `shiny`: https://shiny.rstudio.com/
+- Serveur réactif R + interface utilisateur
+- Toutes les capacités de R accessibles
+- Peut être simple...
+- mais aussi complexe
+  - html5, css, javascript
+
+
+
+<!-- ################################################################################ -->
+
+---
+
+<iframe width="100%" height="100%"
+src="https://shiny.rstudio.com/gallery/kmeans-example.html">
+</iframe>
+
+<!-- ################################################################################ -->
+
+---
+
+<iframe width="100%" height="100%"
+src="https://shiny.rstudio.com/gallery/retirement-simulation.html">
+</iframe>
+
+<!-- ################################################################################ -->
+
+---
+
+<iframe width="100%" height="100%"
+src="https://ahasverus.shinyapps.io/bioclimaticatlas/">
+</iframe>
+
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## Ressources
+
+<!-- ################################################################################ -->
+
+---
+
+## Ressources
+
+- GitHub: [https://github.com/](https://github.com/)
+- StackOverflow: [https://stackoverflow.com/](https://stackoverflow.com/)
+- ROpenSci: [https://ropensci.org/](https://ropensci.org/)
+- inSileco: [https://stackoverflow.com/](https://stackoverflow.com/)
+- Data vizualisation project: [https://datavizproject.com/](https://datavizproject.com/)
+- Liste de ressources pour R: [https://insileco.github.io/wiki/rgraphpkgs/](https://insileco.github.io/wiki/rgraphpkgs/)
+- Livre en construction: [https://github.com/inSileco/VisualiseR](https://github.com/inSileco/VisualiseR)
+
+<!-- ################################################################################ -->
+
+--- .transition
+
+## C'est fini!
